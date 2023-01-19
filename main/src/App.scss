@@ -1,0 +1,106 @@
+:root {
+	--color-black: #222328;
+	--color-white: #fefeff;
+	--color-light: #f9fafe;
+	--color-light-100: rgba(249, 250, 254, 0.75);
+	--color-paragraph: rgb(0, 0, 0, 0.75);
+	--color-gray-50: #fafafa;
+	--color-gray-100: #f2f2f2;
+	--color-gray-200: #e6ebf4;
+	--color-gray-300: #e4e4e4;
+	--color-gray-400: #e1e1e1;
+	--color-gray-500: #c8c8c8;
+	--font-primary: 'Manrope';
+}
+::selection {
+	background-color: #b7c1cc;
+	// color: var(--color-light);
+}
+
+*,
+*::before,
+*::after {
+	outline-color: #b7c1cc;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+textarea,
+input {
+	outline: none;
+}
+
+main {
+    margin: 100px auto;
+    max-width: 1030px;
+}
+
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+
+.text-input {
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+	background-position: 20px 50%;
+	padding: 10px 50px;
+	width: 100%;
+	border: solid 1px var(--color-gray-400);
+	border-radius: 15px;
+	transition: 0.3s ease;
+
+	&:focus {
+		border: solid 1px var(--color-gray-500);
+	}
+
+    &.lg{
+        height: 60px;
+        border-radius: 20px;
+    }
+}
+
+.btn {
+	border: solid 1px transparent;
+	border-radius: 15px;
+	padding: 10px;
+	width: 130px;
+	font-size: 1rem;
+	font-weight: 400;
+	transition: 0.3s ease;
+	cursor: pointer;
+
+	&-primary {
+		background-color: transparent;
+		border: solid 1px var(--color-gray-400);
+		opacity: 0.5;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&.active {
+			background-color: var(--color-gray-50);
+			border: solid 1px var(--color-gray-400);
+			opacity: 1;
+		}
+
+		@media (max-width: 728px) {
+			padding: 10px;
+			width: 110px;
+			font-size: 0.875rem;
+		}
+	}
+}
