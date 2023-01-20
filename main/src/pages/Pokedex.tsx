@@ -2,30 +2,45 @@ import React, { useEffect, useState } from 'react';
 
 import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
 
-import axios from 'axios';
-
 import Card from '../components/Card/Card';
-import config from '../config';
 import CMDK from '../components/CMDK/CMDK';
 import { useSettings } from '../context/SettingsContext.js';
 import PokemonModal from '../components/PokemonPopUp/PokemonModal';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
+interface pokemonStatsModel {
+	base_stat: number;
+	pokemon_v2_stat: { name: string };
+}
+
+interface pokemonTypesModel {
+	pokemon_v2_type: { name: string };
+}
+
 interface Pokemons {
 	name: string;
-	url: string;
+	id: number;
+	pokemon_v2_pokemonstats: pokemonStatsModel[];
+	pokemon_v2_pokemontypes: pokemonTypesModel[];
 }
 
 function Pokedex() {
-	const [pokemons, setPokemons] = useState<Pokemons[]>([]);
+	// const [pokemons, setPokemons] = useState<Pokemons[]>([]);
 	const [alteredPokemons, setAlteredPokemons] = useState<Pokemons[]>([]);
 	const [search, setSearch] = useState<string>('');
 
 	const location = useLocation();
 	const navigate = useNavigate();
-	const { cmdkIsOpen, toggleCmdk, setCmdkPage } = useSettings();
 
-	const handleKeyDown = (e: { e: KeyboardEvent }) => {
+	const {
+		pokemons,
+		cmdkIsOpen,
+		toggleCmdk,
+		setCmdkPage,
+		loading,
+	}: { pokemons: Pokemons[]; cmdkIsOpen: boolean; toggleCmdk: () => void; setCmdkPage: (e: any) => void; loading: boolean } = useSettings();
+
+	const handleKeyDown = (e: KeyboardEvent) => {
 		// @ts-ignore
 		const { key, metaKey } = e;
 		if (key === 'k' && metaKey) {
@@ -35,7 +50,9 @@ function Pokedex() {
 	};
 
 	useEffect(() => {
-		getPokemons();
+		if (pokemons) {
+			setAlteredPokemons(pokemons);
+		}
 		// @ts-ignore
 		window.addEventListener('keydown', handleKeyDown, false);
 
@@ -45,15 +62,7 @@ function Pokedex() {
 		};
 	}, []);
 
-	const getPokemons = async () => {
-		const res = await axios.get(config.resourceServer.getPokemonsUrl);
-		setPokemons(res.data.results);
-		setAlteredPokemons(res.data.results);
-
-		console.log(res);
-	};
-
-	if (pokemons.length < 1) {
+	if (loading) {
 		return <p>Loading</p>;
 	}
 
@@ -61,7 +70,7 @@ function Pokedex() {
 		const { value } = e.target;
 		setSearch(value);
 
-		const filteredPokemons = pokemons.filter(pokemon => pokemon.name.includes(value));
+		const filteredPokemons = pokemons.filter((pokemon: any) => pokemon.name.includes(value));
 		setAlteredPokemons(filteredPokemons);
 	};
 

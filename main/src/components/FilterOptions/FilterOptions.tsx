@@ -1,7 +1,7 @@
 import React from 'react';
 
 function FilterOptions() {
-	const OPTIONS = ['Fire', 'Dark', 'Ice', 'Fairy', 'Poison'];
+	const OPTIONS = ['fire', 'dark', 'ice', 'fairy', 'poison', 'psychic'];
 
 	return (
 		<div className="mt-5 fade-up">

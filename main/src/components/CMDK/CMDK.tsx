@@ -3,10 +3,12 @@ import './CMDK.scss';
 
 import Commands from './Commands/Commands';
 import PokemonPreview from './PokemonPreview/PokemonPreview';
-import searchIcon from '../../assets/icons/svg/fi-rr-search.svg';
-import { useSettings } from '../../context/SettingsContext.js';
 import FilterOptions from '../FilterOptions/FilterOptions';
 import SortOptions from './SortOptions/SortOptions';
+
+import { useSettings } from '../../context/SettingsContext.js';
+
+import searchIcon from '../../assets/icons/svg/fi-rr-search.svg';
 
 function CMDK() {
 	const { cmdkPage } = useSettings();

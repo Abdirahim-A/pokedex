@@ -28,15 +28,16 @@ function Commands() {
 					<Icons type="sort" />
 					Sort
 				</li>
-				<li className={`flex flex-row items-center gap-2 font-medium opacity-50 hover:opacity-100 transition-opacity cursor-pointer mb-2`}>
-					<Icons type="toggle" /> Toggle theme
-				</li>
 				<li
 					className={`flex flex-row items-center gap-2 font-medium ${
 						cmdkPage === '/favorite' ? '' : 'opacity-50'
-					} hover:opacity-100 transition-opacity cursor-pointer`}
+					} hover:opacity-100 transition-opacity cursor-pointer mb-2`}
 					onClick={() => setCmdkPage('/favorite')}>
 					<Icons type="favorite" /> Favorite
+				</li>
+
+				<li className={`flex flex-row items-center gap-2 font-medium opacity-50 hover:opacity-100 transition-opacity cursor-pointer`}>
+					<Icons type="toggle" /> Toggle theme
 				</li>
 			</ul>
 		</div>
