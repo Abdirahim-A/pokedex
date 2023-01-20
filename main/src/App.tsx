@@ -1,32 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/';
+import { SettingsProvider } from './context/SettingsContext';
 
-// @ts-ignore
-import CMDK from './components/CMDK/CMDK.tsx';
 
 function App() {
-	const handleKeyDown = () => {
-		console.log('yeessss');
-	};
-
-	useEffect(() => {
-		document.addEventListener('keydown', handleKeyDown);
-
-		return () => {
-			document.removeEventListener('keydown', handleKeyDown);
-		};
-	}, [handleKeyDown]);
-
 	return (
 		<main className="App">
-			{/* <CMDK /> */}
-			<Routes>
-				{publicRoutes.map((route, index) => (
-					<Route key={index} path={route.path} element={route.component} />
-				))}
-			</Routes>
+			<SettingsProvider>
+				<Routes>
+					{publicRoutes.map((route, index) => (
+						<Route key={index} path={route.path} element={route.component} />
+					))}
+				</Routes>
+			</SettingsProvider>
 		</main>
 	);
 }

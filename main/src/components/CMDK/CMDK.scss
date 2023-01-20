@@ -1,8 +1,20 @@
 .cmdk{
     padding: 30px;
     width: 500px;
-    height: 600px;
+    min-height: 600px;
     border: solid 1px var(--color-gray-400);
     border-radius: 30px;
     background-color: rgba(255, 255, 255, 0.9);
+    animation: cmdkAnimation 0.3s ease both;
+}
+
+@keyframes cmdkAnimation {
+	0% {
+		opacity: 0;
+        transform: scale(0.9);
+	}
+	100% {
+		opacity: 1;
+        transform: scale(1);
+	}
 }

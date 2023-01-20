@@ -1,37 +1,42 @@
 .card {
 	display: flex;
-    transition: .3s ease;
-    cursor: pointer;
-    
+	transition: 0.3s ease;
+	cursor: pointer;
+
 	&.sm {
 		flex-direction: row;
 		justify-content: space-between;
-        align-items: center;
+		align-items: center;
 		width: 100%;
-        padding: 5px 20px;
-        border: solid 1px var(--color-gray-400);
-        // background-color: var(--color-gray-50);
-        // height: 60px;
-        border-radius: 20px;
+		padding: 5px 20px;
+		border: solid 1px var(--color-gray-400);
+		// background-color: var(--color-gray-50);
+		height: 80px;
+		border-radius: 25px;
+
+		& img {
+			width: 60px;
+		}
 	}
 
-    &.md {
+	&.md {
 		flex-direction: column;
 		justify-content: space-between;
-		width: 330px;
-        padding: 30px;
-        border: solid 1px var(--color-gray-400);
-        // background-color: var(--color-gray-50);
-        // height: 60px;
-        border-radius: 20px;
+		width: 100%;
+		padding: 30px;
+		border: solid 1px var(--color-gray-400);
+		background-color: var(--color-gray-50);
+		// height: 60px;
+		border-radius: 20px;
 
-        & img{
-            width: 250px;
-            margin: auto;
-        }
+		& img {
+			width: 250px;
+			margin: auto;
+		}
 	}
 
-    &:hover{
-        background-color: var(--color-gray-50);
-    }
+	&:hover {
+		background-color: rgb(132, 107, 166, 0.1);
+		border: solid 1px rgb(132, 107, 166, 0.5);;
+	}
 }

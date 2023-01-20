@@ -2,7 +2,7 @@
 import Pokedex from "../pages/Pokedex.tsx"
 
 const publicRoutes = [
-	{ path: '/', component: <Pokedex /> },
+	{ path: '/*', component: <Pokedex /> }
 ];
 
 export { publicRoutes };

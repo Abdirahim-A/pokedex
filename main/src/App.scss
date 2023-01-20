@@ -26,31 +26,34 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+	font-family: 'Manrope', sans-serif;
+}
+
 textarea,
 input {
 	outline: none;
 }
 
 main {
-    margin: 100px auto;
-    max-width: 1030px;
+	margin: 100px auto;
+	max-width: 1030px;
 }
 
-
-.overlay{
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    backdrop-filter: blur(10px);
-    z-index: 10;
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	backdrop-filter: blur(10px);
+	z-index: 10;
 }
-
 
 .text-input {
 	background-repeat: no-repeat;
@@ -66,10 +69,10 @@ main {
 		border: solid 1px var(--color-gray-500);
 	}
 
-    &.lg{
-        height: 60px;
-        border-radius: 20px;
-    }
+	&.lg {
+		height: 60px;
+		border-radius: 20px;
+	}
 }
 
 .btn {
@@ -78,17 +81,18 @@ main {
 	padding: 10px;
 	width: 130px;
 	font-size: 1rem;
-	font-weight: 400;
+	font-weight: 500;
 	transition: 0.3s ease;
 	cursor: pointer;
 
 	&-primary {
 		background-color: transparent;
 		border: solid 1px var(--color-gray-400);
-		opacity: 0.5;
+		// opacity: 0.5;
 
 		&:hover {
 			opacity: 1;
+			background-color: var(--color-gray-50);
 		}
 
 		&.active {
@@ -103,4 +107,41 @@ main {
 			font-size: 0.875rem;
 		}
 	}
+
+	&-sm {
+		width: 100px;
+		padding: 5px;
+		border-radius: 12px;
+		font-size: 0.875rem;
+	}
+}
+
+.fade-up {
+	animation: fadeUp 0.3s ease both;
+
+	&--3 {
+		animation: fadeUp 0.3s 0.3s both ease;
+	}
+
+	&--5 {
+		animation: fadeUp 0.3s 0.5s both ease;
+	}
+}
+
+@keyframes fadeUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+.bar {
+	width: 300px;
+	height: 8px;
+	border-radius: 10px;
+	background-color: var(--color-gray-100);
 }
