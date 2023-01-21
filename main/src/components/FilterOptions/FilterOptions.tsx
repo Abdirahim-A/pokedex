@@ -5,7 +5,7 @@ function FilterOptions() {
 
 	return (
 		<div className="mt-5 fade-up">
-			<h3 className="text-lg font-medium mb-3"> Filter options </h3>
+			<h3 className="text-lg font-medium mb-3"> Filter By </h3>
 
 			<div className="mb-3">
 				<p className="text-xs font-medium opacity-50 mb-2">Type</p>

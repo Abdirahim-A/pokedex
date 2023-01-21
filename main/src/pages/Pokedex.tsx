@@ -5,7 +5,7 @@ import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
 import Card from '../components/Card/Card';
 import CMDK from '../components/CMDK/CMDK';
 import { useSettings } from '../context/SettingsContext.js';
-import PokemonModal from '../components/PokemonPopUp/PokemonModal';
+import PokemonModal from '../components/PokemonModal/PokemonModal';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 interface pokemonStatsModel {
@@ -82,8 +82,7 @@ function Pokedex() {
 		if (pokemons) {
 			setAlteredPokemons(pokemons);
 		}
-
-		console.log('sjj');
+    
 	}, [pokemons]);
 
 	if (loading) {

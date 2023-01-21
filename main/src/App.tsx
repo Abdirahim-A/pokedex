@@ -1,11 +1,15 @@
-import React, { createContext, useState } from 'react';
+import React from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/';
-import { SettingsProvider } from './context/SettingsContext';
+import { SettingsProvider, useSettings } from './context/SettingsContext';
 
 
 function App() {
+    
+
+
+  
 	return (
 		<main className="App">
 			<SettingsProvider>

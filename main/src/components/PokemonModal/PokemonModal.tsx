@@ -1,4 +1,4 @@
-import './PokemonModal.scss'
+import './PokemonModal.scss';
 
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../../context/SettingsContext';
@@ -44,8 +44,15 @@ function PokemonModal() {
 						<Icons type="close" />
 					</Link>
 				</div>
+
 				<div className="m-auto mb-3" style={{ width: '300px', position: 'relative', zIndex: '1' }}>
 					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${selectedPokemon.id}.png`} width="100%" />
+				</div>
+
+				<div className="flex gap-3 mb-5 mt-5">
+					<button className="btn btn-primary btn-sm active">Stats</button>
+					<button className="btn btn-primary btn-sm">Details</button>
+					<button className="btn btn-primary btn-sm">Evolution</button>
 				</div>
 
 				<PokeStats pokemonStats={selectedPokemon.pokemon_v2_pokemonstats} />

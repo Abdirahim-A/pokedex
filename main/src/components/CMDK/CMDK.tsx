@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './CMDK.scss';
 
 import Commands from './Commands/Commands';
@@ -9,14 +9,21 @@ import SortOptions from './SortOptions/SortOptions';
 import { useSettings } from '../../context/SettingsContext.js';
 
 import searchIcon from '../../assets/icons/svg/fi-rr-search.svg';
+import Icons from '../Icons/Icons';
 
 function CMDK() {
-	const { cmdkPage } = useSettings();
+	const { cmdkPage, closeCmdk } = useSettings();
 
 	return (
 		<div className="overlay fade-up">
 			<div className="cmdk shadow-lg">
-				<p className="text-xs font-medium opacity-50 mb-2">close</p>
+				<div className="flex flex-row justify-between mb-5">
+					<p className="text-xs font-medium opacity-50">home</p>
+					<span className="opacity-50 hover:opacity-100 transition-opacity cursor-pointer" onClick={() => closeCmdk()}>
+						<Icons type="close" />
+					</span>
+				</div>
+
 				<input
 					type="text"
 					style={{

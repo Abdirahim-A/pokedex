@@ -6,7 +6,6 @@ interface pokemonStats {
 }
 
 function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
-
 	const totalStats = 230;
 
 	const getStatColor = (stat: number) => {
@@ -20,13 +19,7 @@ function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 	};
 
 	return (
-		<div>
-			<div className="flex gap-3 mb-5">
-				<button className="btn btn-primary btn-sm">About</button>
-				<button className="btn btn-primary btn-sm active">Stats</button>
-				<button className="btn btn-primary btn-sm active">Evolution</button>
-			</div>
-
+		<>
 			{pokemonStats.map(stat => (
 				<div className="flex flex-col mb-2" key={stat.pokemon_v2_stat.name + '-poke'}>
 					<div className="flex flex-row gap-5 justify-between">
@@ -34,7 +27,7 @@ function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 
 						<div className="flex flex-row gap-3 items-center">
 							<p className="text-sm font-semibold">{stat.base_stat}</p>
-							<div className="bar bg-gray-100">
+							<div className="bar" style={{backgroundColor: 'var(--color-gray-100'}}>
 								<div
 									className={`bar bg ${getStatColor(stat.base_stat)}`}
 									style={{ width: (stat.base_stat / totalStats) * 100 + '%' }}></div>
@@ -43,7 +36,7 @@ function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 					</div>
 				</div>
 			))}
-		</div>
+		</>
 	);
 }
 

@@ -23,9 +23,9 @@ function Card({ size, pokemon }: { size: string; pokemon: Pokemon }) {
 			return (
 				<div className={`card ${size} ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}>
 					<div className="flex flex-row items-center gap-3">
-						<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${pokemon.id}.png`} />
+						<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}/>
 						<div>
-							<p className="text-xs opacity-50">#{pokemon.id}</p>
+							<p className="text-sm opacity-50">#{pokemon.id}</p>
 							<p className="text-md font-medium capitalize">{pokemon.name}</p>
 						</div>
 					</div>
@@ -43,9 +43,9 @@ function Card({ size, pokemon }: { size: string; pokemon: Pokemon }) {
 		case 'md':
 			return (
 				<div className={`card ${size} ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}>
-					<p className="text-xs opacity-50">#{pokemon.id}</p>
+					<p className="text-sm opacity-50">#{pokemon.id}</p>
 
-					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`} width="50px" />
+					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`}/>
 
 					<div>
 						<p className="text-lg font-medium mt-3 capitalize">{pokemon.name}</p>
@@ -66,9 +66,9 @@ function Card({ size, pokemon }: { size: string; pokemon: Pokemon }) {
 			return (
 				<div className={`card ${size} ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}>
 					<div className="flex flex-row items-center gap-3">
-						<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`} width="50px" />
+						<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`} />
 						<div>
-							<p className="text-xs opacity-50">#{pokemon.id}</p>
+							<p className="text-sm opacity-50">#{pokemon.id}</p>
 							<p className="text-md font-medium">{pokemon.name}</p>
 						</div>
 					</div>

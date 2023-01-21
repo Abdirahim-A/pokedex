@@ -17,18 +17,21 @@ export function SettingsProvider({ children }) {
 	const [cmdkIsOpen, setCmdkIsOpen] = useState(false);
 	const [cmdkPage, setCmdkPage] = useState('/favorite');
 	const [pokemons, setPokemons] = useState([]);
+	const [isDark, setIsDark] = useState(false)
 
 	useEffect(() => {
 		getPokemons();
 	}, [pokemons]);
 
+	//715
+	//788
 	const getPokemons = async () => {
 		setLoading(true);
 		await client
 			.query({
 				query: gql`
 					query samplePokeAPIquery {
-						pokemon_v2_pokemon(limit: 30, offset: 800) {
+						pokemon_v2_pokemon(limit: 30, offset: 585) {
 							id
 							name
 							pokemon_v2_pokemonstats {
@@ -71,6 +74,8 @@ export function SettingsProvider({ children }) {
 		setCmdkPage,
 		pokemons,
 		closeCmdk,
+		isDark,
+		setIsDark
 	};
 
 	return <SettingContext.Provider value={value}>{!loading && children}</SettingContext.Provider>;

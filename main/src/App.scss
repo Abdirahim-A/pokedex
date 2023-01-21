@@ -1,17 +1,3 @@
-:root {
-	--color-black: #222328;
-	--color-white: #fefeff;
-	--color-light: #f9fafe;
-	--color-light-100: rgba(249, 250, 254, 0.75);
-	--color-paragraph: rgb(0, 0, 0, 0.75);
-	--color-gray-50: #fafafa;
-	--color-gray-100: #f2f2f2;
-	--color-gray-200: #e6ebf4;
-	--color-gray-300: #e4e4e4;
-	--color-gray-400: #e1e1e1;
-	--color-gray-500: #c8c8c8;
-	--font-primary: 'Manrope';
-}
 ::selection {
 	background-color: #b7c1cc;
 	// color: var(--color-light);
@@ -28,20 +14,67 @@
 
 html,
 body {
+	--color-black: #222328;
+	--color-white: #fefeff;
+	--color-light: #f9fafe;
+	--color-light-100: rgba(249, 250, 254, 0.75);
+	--color-paragraph: rgb(0, 0, 0, 0.75);
+	--color-gray-50: #f9f9f9;
+	--color-gray-90: rgba(255, 255, 255, 0.85);
+	--color-gray-100: #f2f2f2;
+	--color-gray-200: #e6ebf4;
+	--color-gray-300: #e4e4e4;
+	--color-gray-400: #e1e1e1;
+	--color-gray-500: #c8c8c8;
+
+	&.dark {
+		--color-black: #f9fafe;
+		--color-white: #fefeff;
+		--color-light: #161618;
+		--color-light-100: rgba(0, 0, 0, 0.75);
+		--color-paragraph: rgba(255, 255, 255, 0.75);
+		--color-gray-50: rgb(27, 27, 28, 0.5);
+		--color-gray-90: rgb(27, 27, 28, 0.85);
+		--color-gray-100: #292929;
+		--color-gray-200: #e6ebf4;
+		--color-gray-300: #e4e4e4;
+		--color-gray-400: #383838;
+		--color-gray-500: #2a2a2a;
+	}
+
+	background-color: var(--color-light);
 	font-family: 'Manrope', sans-serif;
+	transition: 0.3s ease;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-black);
+}
+
+p {
+	color: var(--color-paragraph);
+}
 textarea,
 input {
 	outline: none;
 }
 
 main {
-	margin: 100px auto;
+	margin: 0px auto;
+	padding-top: 100px;
+	padding-bottom: 100px;
 	max-width: 1030px;
+	min-height: 100vh;
 
-    @media (max-width: 1100px) {
-		margin: 100px 30px;
+	@media (max-width: 1100px) {
+		margin: 0px 30px;
+		padding-top: 50px;
+		padding-bottom: 50px;
 	}
 }
 
@@ -64,7 +97,9 @@ main {
 	background-position: 20px 50%;
 	padding: 10px 50px;
 	width: 100%;
+	color: var(--color-black);
 	border: solid 1px var(--color-gray-400);
+	background-color: var(--color-light);
 	border-radius: 15px;
 	transition: 0.3s ease;
 
@@ -87,9 +122,10 @@ main {
 	font-weight: 500;
 	transition: 0.3s ease;
 	cursor: pointer;
+	color: var(--color-black);
 
 	&-primary {
-		background-color: transparent;
+		background-color: var(--color-light);
 		border: solid 1px var(--color-gray-400);
 		// opacity: 0.5;
 
@@ -146,6 +182,10 @@ main {
 	width: 270px;
 	height: 8px;
 	border-radius: 10px;
+
+	@media (max-width: 640px) {
+		width: 200px;
+	}
 }
 
 .mini-circle {
@@ -222,7 +262,7 @@ main {
 		background-color: #d9a050;
 	}
 
-    &.bug{
-        background-color: rgb(149, 186, 56);;
-    }
+	&.bug {
+		background-color: rgb(149, 186, 56);
+	}
 }
