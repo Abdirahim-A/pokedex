@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 
 const client = new ApolloClient({
 	uri: 'https://beta.pokeapi.co/graphql/v1beta',
@@ -20,7 +20,7 @@ export function SettingsProvider({ children }) {
 
 	useEffect(() => {
 		getPokemons();
-	}, []);
+	}, [pokemons]);
 
 	const getPokemons = async () => {
 		setLoading(true);
@@ -28,7 +28,7 @@ export function SettingsProvider({ children }) {
 			.query({
 				query: gql`
 					query samplePokeAPIquery {
-						pokemon_v2_pokemon(limit: 30, offset: 480) {
+						pokemon_v2_pokemon(limit: 30, offset: 800) {
 							id
 							name
 							pokemon_v2_pokemonstats {
@@ -59,6 +59,10 @@ export function SettingsProvider({ children }) {
 		if (page) setCmdkPage(page);
 	};
 
+	const closeCmdk = () => {
+		setCmdkIsOpen(false);
+	};
+
 	const value = {
 		loading,
 		cmdkIsOpen,
@@ -66,6 +70,7 @@ export function SettingsProvider({ children }) {
 		cmdkPage,
 		setCmdkPage,
 		pokemons,
+		closeCmdk,
 	};
 
 	return <SettingContext.Provider value={value}>{!loading && children}</SettingContext.Provider>;

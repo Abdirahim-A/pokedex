@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
 
@@ -36,23 +36,39 @@ function Pokedex() {
 		pokemons,
 		cmdkIsOpen,
 		toggleCmdk,
+		closeCmdk,
 		setCmdkPage,
 		loading,
-	}: { pokemons: Pokemons[]; cmdkIsOpen: boolean; toggleCmdk: () => void; setCmdkPage: (e: any) => void; loading: boolean } = useSettings();
+	}: {
+		pokemons: Pokemons[];
+		cmdkIsOpen: boolean;
+		toggleCmdk: () => void;
+		closeCmdk: () => void;
+		setCmdkPage: (e: any) => void;
+		loading: boolean;
+	} = useSettings();
 
-	const handleKeyDown = (e: KeyboardEvent) => {
-		// @ts-ignore
-		const { key, metaKey } = e;
-		if (key === 'k' && metaKey) {
-			toggleCmdk();
-			navigate('/');
-		}
-	};
+	const handleKeyDown = useCallback(
+		(e: KeyboardEvent) => {
+			// @ts-ignore
+			const { key, metaKey } = e;
+			if (key === 'k' && metaKey) {
+				toggleCmdk();
+				navigate('/');
+			}
+
+			if (key === 'Escape' && cmdkIsOpen) {
+				closeCmdk();
+			}
+
+			if (key === 'Escape' && location.pathname !== '/') {
+				navigate('/');
+			}
+		},
+		[closeCmdk, cmdkIsOpen, toggleCmdk, navigate, location.pathname]
+	);
 
 	useEffect(() => {
-		if (pokemons) {
-			setAlteredPokemons(pokemons);
-		}
 		// @ts-ignore
 		window.addEventListener('keydown', handleKeyDown, false);
 
@@ -60,7 +76,15 @@ function Pokedex() {
 			// @ts-ignore
 			window.removeEventListener('keydown', handleKeyDown, false);
 		};
-	}, []);
+	}, [handleKeyDown]);
+
+	useEffect(() => {
+		if (pokemons) {
+			setAlteredPokemons(pokemons);
+		}
+
+		console.log('sjj');
+	}, [pokemons]);
 
 	if (loading) {
 		return <p>Loading</p>;
@@ -118,7 +142,7 @@ function Pokedex() {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-3 gap-4 justify-between">
+			<div className="grid grid-cols-2 gap-4 justify-between lg:grid-cols-3">
 				{alteredPokemons.map(pokemon => (
 					<Link to={'/' + pokemon.name} key={pokemon.name}>
 						<Card size={'md'} pokemon={pokemon} />

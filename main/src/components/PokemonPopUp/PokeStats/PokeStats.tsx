@@ -7,11 +7,11 @@ interface pokemonStats {
 
 function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 
-	const totalStats = 190;
+	const totalStats = 230;
 
 	const getStatColor = (stat: number) => {
 		if (stat >= 90) {
-			return 'bg-lime-400';
+			return 'bg-green-500';
 		} else if (stat >= 30 && stat < 90) {
 			return 'bg-orange-400';
 		} else {
@@ -30,7 +30,7 @@ function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 			{pokemonStats.map(stat => (
 				<div className="flex flex-col mb-2" key={stat.pokemon_v2_stat.name + '-poke'}>
 					<div className="flex flex-row gap-5 justify-between">
-						<p className="text-sm opacity-50">{stat.pokemon_v2_stat.name}</p>
+						<p className="text-sm opacity-50 capitalize">{stat.pokemon_v2_stat.name}</p>
 
 						<div className="flex flex-row gap-3 items-center">
 							<p className="text-sm font-semibold">{stat.base_stat}</p>

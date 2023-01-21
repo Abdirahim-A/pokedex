@@ -16,7 +16,7 @@ function CMDK() {
 	return (
 		<div className="overlay fade-up">
 			<div className="cmdk shadow-lg">
-				<p className="text-xs font-medium opacity-50 mb-2">Home</p>
+				<p className="text-xs font-medium opacity-50 mb-2">close</p>
 				<input
 					type="text"
 					style={{

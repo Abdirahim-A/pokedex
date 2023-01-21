@@ -1,20 +1,24 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import './PokemonModal.scss'
+
 import { Link, useLocation } from 'react-router-dom';
-import config from '../../config';
 import { useSettings } from '../../context/SettingsContext';
 import Icons from '../Icons/Icons';
 import PokeStats from './PokeStats/PokeStats';
 
-interface pokemonStats {
+interface pokemonStatsModel {
 	base_stat: number;
 	pokemon_v2_stat: { name: string };
+}
+
+interface pokemonTypesModel {
+	pokemon_v2_type: { name: string };
 }
 
 interface Pokemons {
 	name: string;
 	id: number;
-	pokemon_v2_pokemonstats: pokemonStats[];
+	pokemon_v2_pokemonstats: pokemonStatsModel[];
+	pokemon_v2_pokemontypes: pokemonTypesModel[];
 }
 
 function PokemonModal() {
@@ -30,16 +34,17 @@ function PokemonModal() {
 	return (
 		<div className="overlay fade-up">
 			<div className="cmdk shadow-lg">
+				<div className={`bg-blur ${selectedPokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}></div>
 				<div className="flex justify-between">
 					<div>
 						<p className="text-sm opacity-50">#{selectedPokemon.id}</p>
-						<p className="text-xl font-medium">{selectedPokemon.name}</p>
+						<p className="text-xl font-medium capitalize">{selectedPokemon.name}</p>
 					</div>
 					<Link to={'/'} className="opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
 						<Icons type="close" />
 					</Link>
 				</div>
-				<div className="m-auto" style={{ width: '300px' }}>
+				<div className="m-auto mb-3" style={{ width: '300px', position: 'relative', zIndex: '1' }}>
 					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${selectedPokemon.id}.png`} width="100%" />
 				</div>
 
