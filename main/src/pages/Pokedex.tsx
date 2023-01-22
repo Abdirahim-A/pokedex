@@ -4,49 +4,21 @@ import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
 
 import Card from '../components/Card/Card';
 import CMDK from '../components/CMDK/CMDK';
-import { useSettings } from '../context/SettingsContext.js';
+import { useStore } from '../context/StoreContext.js';
 import PokemonModal from '../components/PokemonModal/PokemonModal';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-
-interface pokemonStatsModel {
-	base_stat: number;
-	pokemon_v2_stat: { name: string };
-}
-
-interface pokemonTypesModel {
-	pokemon_v2_type: { name: string };
-}
-
-interface Pokemons {
-	name: string;
-	id: number;
-	pokemon_v2_pokemonstats: pokemonStatsModel[];
-	pokemon_v2_pokemontypes: pokemonTypesModel[];
-}
+import PokemonInterface from '../Interface/PokemonInterface';
+import StoreInterface from '../Interface/StoreInterface';
 
 function Pokedex() {
 	// const [pokemons, setPokemons] = useState<Pokemons[]>([]);
-	const [alteredPokemons, setAlteredPokemons] = useState<Pokemons[]>([]);
+	const [alteredPokemons, setAlteredPokemons] = useState<PokemonInterface[]>([]);
 	const [search, setSearch] = useState<string>('');
 
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const {
-		pokemons,
-		cmdkIsOpen,
-		toggleCmdk,
-		closeCmdk,
-		setCmdkPage,
-		loading,
-	}: {
-		pokemons: Pokemons[];
-		cmdkIsOpen: boolean;
-		toggleCmdk: () => void;
-		closeCmdk: () => void;
-		setCmdkPage: (e: any) => void;
-		loading: boolean;
-	} = useSettings();
+	const { pokemons, cmdkIsOpen, toggleCmdk, closeCmdk, setCmdkPage, loading }: StoreInterface = useStore();
 
 	const handleKeyDown = useCallback(
 		(e: KeyboardEvent) => {
@@ -82,7 +54,6 @@ function Pokedex() {
 		if (pokemons) {
 			setAlteredPokemons(pokemons);
 		}
-    
 	}, [pokemons]);
 
 	if (loading) {

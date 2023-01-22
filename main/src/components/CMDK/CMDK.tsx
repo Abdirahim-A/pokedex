@@ -6,13 +6,13 @@ import PokemonPreview from './PokemonPreview/PokemonPreview';
 import FilterOptions from '../FilterOptions/FilterOptions';
 import SortOptions from './SortOptions/SortOptions';
 
-import { useSettings } from '../../context/SettingsContext.js';
+import { useStore } from '../../context/StoreContext.js';
 
 import searchIcon from '../../assets/icons/svg/fi-rr-search.svg';
 import Icons from '../Icons/Icons';
 
 function CMDK() {
-	const { cmdkPage, closeCmdk } = useSettings();
+	const { cmdkPage, closeCmdk } = useStore();
 
 	return (
 		<div className="overlay fade-up">
@@ -34,6 +34,7 @@ function CMDK() {
 				/>
 
 				<Commands />
+        
 				{cmdkPage === '/sort' && <SortOptions />}
 				{cmdkPage === '/filter' && <FilterOptions />}
 				{cmdkPage === '/favorite' && <PokemonPreview />}

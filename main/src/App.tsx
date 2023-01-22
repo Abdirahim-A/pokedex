@@ -2,23 +2,18 @@ import React from 'react';
 import './App.scss';
 import { Routes, Route } from 'react-router-dom';
 import { publicRoutes } from './routes/';
-import { SettingsProvider, useSettings } from './context/SettingsContext';
-
+import { StoreProvider } from './context/StoreContext';
 
 function App() {
-    
-
-
-  
 	return (
 		<main className="App">
-			<SettingsProvider>
+			<StoreProvider>
 				<Routes>
 					{publicRoutes.map((route, index) => (
 						<Route key={index} path={route.path} element={route.component} />
 					))}
 				</Routes>
-			</SettingsProvider>
+			</StoreProvider>
 		</main>
 	);
 }

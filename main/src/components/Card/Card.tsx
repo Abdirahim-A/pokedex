@@ -1,29 +1,17 @@
 import React from 'react';
 import './Card.scss';
 
-interface pokemonStatsModel {
-	base_stat: number;
-	pokemon_v2_stat: { name: string };
-}
+import PokemonInterface from '../../Interface/PokemonInterface';
 
-interface pokemonTypesModel {
-	pokemon_v2_type: { name: string };
-}
-
-interface Pokemon {
-	name: string;
-	id: number;
-	pokemon_v2_pokemonstats: pokemonStatsModel[];
-	pokemon_v2_pokemontypes: pokemonTypesModel[];
-}
-
-function Card({ size, pokemon }: { size: string; pokemon: Pokemon }) {
+function Card({ size, pokemon }: { size: string; pokemon: PokemonInterface }) {
 	switch (size) {
 		case 'sm':
 			return (
 				<div className={`card ${size} ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}>
 					<div className="flex flex-row items-center gap-3">
-						<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}/>
+						<img
+							src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemon.id}.gif`}
+						/>
 						<div>
 							<p className="text-sm opacity-50">#{pokemon.id}</p>
 							<p className="text-md font-medium capitalize">{pokemon.name}</p>
@@ -45,7 +33,7 @@ function Card({ size, pokemon }: { size: string; pokemon: Pokemon }) {
 				<div className={`card ${size} ${pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}`}>
 					<p className="text-sm opacity-50">#{pokemon.id}</p>
 
-					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`}/>
+					<img src={`https://assets.pokemon.com/assets/cms2/img/pokedex/full/${pokemon.id}.png`} />
 
 					<div>
 						<p className="text-lg font-medium mt-3 capitalize">{pokemon.name}</p>

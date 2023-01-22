@@ -6,18 +6,20 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-export const SettingContext = createContext();
+export const StoreContext = createContext();
 
-export function useSettings() {
-	return useContext(SettingContext);
+export function useStore() {
+	return useContext(StoreContext);
 }
 
-export function SettingsProvider({ children }) {
+export function StoreProvider({ children }) {
 	const [loading, setLoading] = useState(false);
+	const [isDark, setIsDark] = useState(false)
+
 	const [cmdkIsOpen, setCmdkIsOpen] = useState(false);
 	const [cmdkPage, setCmdkPage] = useState('/favorite');
+
 	const [pokemons, setPokemons] = useState([]);
-	const [isDark, setIsDark] = useState(false)
 
 	useEffect(() => {
 		getPokemons();
@@ -25,13 +27,14 @@ export function SettingsProvider({ children }) {
 
 	//715
 	//788
+	//480
 	const getPokemons = async () => {
 		setLoading(true);
 		await client
 			.query({
 				query: gql`
 					query samplePokeAPIquery {
-						pokemon_v2_pokemon(limit: 30, offset: 585) {
+						pokemon_v2_pokemon(limit: 30, offset: 383) {
 							id
 							name
 							pokemon_v2_pokemonstats {
@@ -78,5 +81,5 @@ export function SettingsProvider({ children }) {
 		setIsDark
 	};
 
-	return <SettingContext.Provider value={value}>{!loading && children}</SettingContext.Provider>;
+	return <StoreContext.Provider value={value}>{!loading && children}</StoreContext.Provider>;
 }

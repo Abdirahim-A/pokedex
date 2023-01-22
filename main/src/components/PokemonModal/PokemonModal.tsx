@@ -1,31 +1,17 @@
 import './PokemonModal.scss';
 
 import { Link, useLocation } from 'react-router-dom';
-import { useSettings } from '../../context/SettingsContext';
+import { useStore } from '../../context/StoreContext';
 import Icons from '../Icons/Icons';
 import PokeStats from './PokeStats/PokeStats';
 
-interface pokemonStatsModel {
-	base_stat: number;
-	pokemon_v2_stat: { name: string };
-}
-
-interface pokemonTypesModel {
-	pokemon_v2_type: { name: string };
-}
-
-interface Pokemons {
-	name: string;
-	id: number;
-	pokemon_v2_pokemonstats: pokemonStatsModel[];
-	pokemon_v2_pokemontypes: pokemonTypesModel[];
-}
+import PokemonInterface from '../../Interface/PokemonInterface';
 
 function PokemonModal() {
-	const { pokemons }: { pokemons: Pokemons[]; loading: boolean } = useSettings();
+	const { pokemons }: { pokemons: PokemonInterface[] } = useStore();
 	const location = useLocation();
 
-	const [selectedPokemon]: Pokemons[] = pokemons.filter(pokemon => pokemon.name === location.pathname.split('/')[1]);
+	const [selectedPokemon]: PokemonInterface[] = pokemons.filter(pokemon => pokemon.name === location.pathname.slice(1));
 
 	if (!selectedPokemon) {
 		return <p>Loading</p>;
@@ -50,9 +36,9 @@ function PokemonModal() {
 				</div>
 
 				<div className="flex gap-3 mb-5 mt-5">
-					<button className="btn btn-primary btn-sm active">Stats</button>
-					<button className="btn btn-primary btn-sm">Details</button>
-					<button className="btn btn-primary btn-sm">Evolution</button>
+					<button className="btn btn-primary btn-sm">Stats</button>
+					<button className="btn btn-primary btn-sm disabled">Details</button>
+					<button className="btn btn-primary btn-sm disabled">Evolution</button>
 				</div>
 
 				<PokeStats pokemonStats={selectedPokemon.pokemon_v2_pokemonstats} />

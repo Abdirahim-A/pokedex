@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-// @ts-ignore
+//@ts-ignore
 import Icons from '../../Icons/Icons.tsx';
-import { useSettings } from '../../../context/SettingsContext.js';
+import { useStore } from '../../../context/StoreContext.js';
 
 function Commands() {
-	const { cmdkPage, setCmdkPage, isDark, setIsDark } = useSettings();
+	const { cmdkPage, setCmdkPage, isDark, setIsDark } = useStore();
 
 	useEffect(() => {
 		if (isDark) {

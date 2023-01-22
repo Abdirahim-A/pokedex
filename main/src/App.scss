@@ -140,6 +140,11 @@ main {
 			opacity: 1;
 		}
 
+		&.disabled{
+			pointer-events: none;
+			opacity: 0.2;
+		}
+
 		@media (max-width: 728px) {
 			padding: 10px;
 			width: 110px;
