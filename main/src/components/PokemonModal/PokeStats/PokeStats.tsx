@@ -27,10 +27,8 @@ function PokeStats({ pokemonStats }: { pokemonStats: pokemonStats[] }) {
 
 						<div className="flex flex-row gap-3 items-center">
 							<p className="text-sm font-semibold">{stat.base_stat}</p>
-							<div className="bar" style={{backgroundColor: 'var(--color-gray-100'}}>
-								<div
-									className={`bar bg ${getStatColor(stat.base_stat)}`}
-									style={{ width: (stat.base_stat / totalStats) * 100 + '%' }}></div>
+							<div className="bar" style={{ backgroundColor: 'var(--color-gray-100' }}>
+								<div className={`bar bg ${getStatColor(stat.base_stat)}`} style={{ width: (stat.base_stat / totalStats) * 100 + '%' }}></div>
 							</div>
 						</div>
 					</div>

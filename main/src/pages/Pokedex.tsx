@@ -77,7 +77,7 @@ function Pokedex() {
 				<h2 className="font-semibold text-xl">
 					Poked<span className="text-red-500">é</span>x
 				</h2>
-				<p className="opacity-50">A guide to Pokédex stats in the Pokémon games</p>
+				<p className="opacity-50">A guide to Pokédex stats in the Pokémon games. Still a work in progress.</p>
 			</div>
 
 			<div className="mb-6">

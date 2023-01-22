@@ -34,7 +34,7 @@ function CMDK() {
 				/>
 
 				<Commands />
-        
+
 				{cmdkPage === '/sort' && <SortOptions />}
 				{cmdkPage === '/filter' && <FilterOptions />}
 				{cmdkPage === '/favorite' && <PokemonPreview />}
