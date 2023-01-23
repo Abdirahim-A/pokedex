@@ -6,6 +6,8 @@ interface StoreInterface {
 	toggleCmdk: () => void;
 	closeCmdk: () => void;
 	setCmdkPage: (page: string) => void;
+	isDark: boolean;
+	setIsDark: () => void;
 	loading: boolean;
 }
 

@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
+import searchIconLight from '../assets/icons/svg/fi-rr-search-light.svg';
 
 import Card from '../components/Card/Card';
 import CMDK from '../components/CMDK/CMDK';
@@ -18,7 +19,7 @@ function Pokedex() {
 	const location = useLocation();
 	const navigate = useNavigate();
 
-	const { pokemons, cmdkIsOpen, toggleCmdk, closeCmdk, setCmdkPage, loading }: StoreInterface = useStore();
+	const { pokemons, cmdkIsOpen, toggleCmdk, closeCmdk, setCmdkPage, isDark, loading }: StoreInterface = useStore();
 
 	const handleKeyDown = useCallback(
 		(e: KeyboardEvent) => {
@@ -84,7 +85,7 @@ function Pokedex() {
 				<input
 					type="text"
 					style={{
-						backgroundImage: `url(${searchIcon})`,
+						backgroundImage: `url(${isDark ? searchIconLight : searchIcon})`,
 					}}
 					className="text-input lg mb-3"
 					placeholder="Search or ⌘K"
