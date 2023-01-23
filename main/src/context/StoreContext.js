@@ -34,7 +34,7 @@ export function StoreProvider({ children }) {
 			.query({
 				query: gql`
 					query samplePokeAPIquery {
-						pokemon_v2_pokemon(limit: 30, offset: 383) {
+						pokemon_v2_pokemon(limit: 30, offset: 482) {
 							id
 							name
 							pokemon_v2_pokemonstats {
