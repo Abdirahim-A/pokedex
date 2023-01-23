@@ -12,7 +12,7 @@ function FilterOptions() {
 
 				<div className="flex flex-row flex-wrap gap-2">
 					{OPTIONS.map(option => (
-						<button className="btn btn-primary btn-sm" key={option}>
+						<button className="btn btn-primary btn-sm disabled" key={option}>
 							{option}
 						</button>
 					))}

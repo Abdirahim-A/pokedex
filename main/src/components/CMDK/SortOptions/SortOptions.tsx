@@ -9,8 +9,8 @@ function SortOptions() {
 				<p className="text-xs font-medium opacity-50 mb-2">Number</p>
 
 				<div className="flex flex-row flex-wrap gap-2">
-					<button className="btn btn-primary btn-sm">Lowest</button>
-					<button className="btn btn-primary btn-sm">Highest</button>
+					<button className="btn btn-primary btn-sm disabled">Lowest</button>
+					<button className="btn btn-primary btn-sm disabled">Highest</button>
 				</div>
 			</div>
 		</div>

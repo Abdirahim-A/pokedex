@@ -9,10 +9,11 @@ import SortOptions from './SortOptions/SortOptions';
 import { useStore } from '../../context/StoreContext.js';
 
 import searchIcon from '../../assets/icons/svg/fi-rr-search.svg';
+import searchIconLight from '../../assets/icons/svg/fi-rr-search-light.svg';
 import Icons from '../Icons/Icons';
 
 function CMDK() {
-	const { cmdkPage, closeCmdk } = useStore();
+	const { cmdkPage, closeCmdk, isDark } = useStore();
 
 	return (
 		<div className="overlay fade-up">
@@ -27,7 +28,7 @@ function CMDK() {
 				<input
 					type="text"
 					style={{
-						backgroundImage: `url(${searchIcon})`,
+						backgroundImage: `url(${isDark ? searchIconLight : searchIcon})`,
 					}}
 					className="text-input"
 					placeholder="Search..."
