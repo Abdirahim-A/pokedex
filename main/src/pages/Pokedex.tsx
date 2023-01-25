@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import searchIcon from '../assets/icons/svg/fi-rr-search.svg';
 import searchIconLight from '../assets/icons/svg/fi-rr-search-light.svg';
@@ -21,8 +21,8 @@ function Pokedex() {
 
 	const { pokemons, cmdkIsOpen, toggleCmdk, closeCmdk, setCmdkPage, isDark, loading }: StoreInterface = useStore();
 
-	const handleKeyDown = useCallback(
-		(e: KeyboardEvent) => {
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
 			// @ts-ignore
 			const { key, metaKey } = e;
 			if (key === 'k' && metaKey) {
@@ -37,11 +37,8 @@ function Pokedex() {
 			if (key === 'Escape' && location.pathname !== '/') {
 				navigate('/');
 			}
-		},
-		[closeCmdk, cmdkIsOpen, toggleCmdk, navigate, location.pathname]
-	);
+		};
 
-	useEffect(() => {
 		// @ts-ignore
 		window.addEventListener('keydown', handleKeyDown, false);
 
@@ -49,7 +46,7 @@ function Pokedex() {
 			// @ts-ignore
 			window.removeEventListener('keydown', handleKeyDown, false);
 		};
-	}, [handleKeyDown]);
+	}, [closeCmdk, cmdkIsOpen, location.pathname, navigate, toggleCmdk]);
 
 	useEffect(() => {
 		if (pokemons) {
