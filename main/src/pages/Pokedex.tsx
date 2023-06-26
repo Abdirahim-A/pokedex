@@ -39,11 +39,9 @@ function Pokedex() {
 			}
 		};
 
-		// @ts-ignore
 		window.addEventListener('keydown', handleKeyDown, false);
 
 		return () => {
-			// @ts-ignore
 			window.removeEventListener('keydown', handleKeyDown, false);
 		};
 	}, [closeCmdk, cmdkIsOpen, location.pathname, navigate, toggleCmdk]);

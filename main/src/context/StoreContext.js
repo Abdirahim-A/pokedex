@@ -8,13 +8,13 @@ const client = new ApolloClient({
 
 export const StoreContext = createContext();
 
-export function useStore() {
+export const useStore = () => {
 	return useContext(StoreContext);
-}
+};
 
-export function StoreProvider({ children }) {
+export const StoreProvider = ({ children }) => {
 	const [loading, setLoading] = useState(false);
-	const [isDark, setIsDark] = useState(false)
+	const [isDark, setIsDark] = useState(false);
 
 	const [cmdkIsOpen, setCmdkIsOpen] = useState(false);
 	const [cmdkPage, setCmdkPage] = useState('/favorite');
@@ -23,7 +23,7 @@ export function StoreProvider({ children }) {
 
 	useEffect(() => {
 		getPokemons();
-	}, [pokemons]);
+	}, []);
 
 	//715
 	//788
@@ -78,8 +78,8 @@ export function StoreProvider({ children }) {
 		pokemons,
 		closeCmdk,
 		isDark,
-		setIsDark
+		setIsDark,
 	};
 
 	return <StoreContext.Provider value={value}>{!loading && children}</StoreContext.Provider>;
-}
+};
